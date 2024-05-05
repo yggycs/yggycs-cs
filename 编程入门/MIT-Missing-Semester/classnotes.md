@@ -99,6 +99,74 @@ cat /sys/class/power_supply/battery/capacity
 ``` 
 
 ## Lecture 2. Shell Tools and Scripting
+*$0* - the name of the script
+
+*$1 - $9* - the args that the bash script takes
+
+*$?* - th error code from the previous command
+
+*$_* - the last arg of the previous command
+
+*!!* - the last command
+
+*$#* - the number of the args
+
+*\$$* - the pid of the running command
+
+*$@* - the all args 
+
+*2>* - redirect the error standard stream
+
+*$() <()* - replace cmd
+
+### Exercises
+1. 
+```shell
+man ls
+ls -a -t -h --color=auto -l
+```
+2.  
+```shell
+#!/bin/bash
+
+marco () {
+        tmp_path=$(pwd)
+}
+
+polo () {
+        cd "$tmp_path"
+}
+```
+
+3.  
+```shell
+#!/bin/bash
+
+ex3_path="/home/yggycs"
+
+num=1
+$ex3_path/ex3.sh > "$ex3_path/ex3.log"
+
+while [ "$?" -ne 1 ]; do
+        num=$(($num+1))
+        $ex3_path/ex3.sh >> "$ex3_path/ex3.log" 2> "$ex3_path/ex3err.log"
+done
+
+echo "$num"
+cat "$ex3_path/ex3.log" "$ex3_path/ex3err.log"
+```
+
+4.  
+![alt text](figure/fig1.png)
+```shell
+find . -name '*.html' | xargs -d '\n' tar -cvf html.tar
+```
+![alt text](figure/fig2.png)
+
+5.  
+```shell
+find . -type f | xargs -d '\n' ls -t -l -h
+```
 
 ## Lecture 3. Editors (Vim)
 
