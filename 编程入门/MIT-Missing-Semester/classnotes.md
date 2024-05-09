@@ -170,6 +170,50 @@ find . -type f | xargs -d '\n' ls -t -l -h
 
 ## Lecture 3. Editors (Vim)
 
+### Exercises
+1. 
+```shell
+vimtutor
+```
+
+2. 
+```shell
+touch .vimrc
+```
+
+3. 
+```shell
+mkdir -p ~/.vim/pack/vendor/start
+cd ~/.vim/pack/vendor/start; git clone https://github.com/ctrlpvim/ctrlp.vim
+
+# vim command
+:Ctrl-P
+
+# ~/.vimrc
+# let g:ctrlp_map = '<c-p>'
+# let g:ctrlp_cmd = 'CtrlP'
+```
+
+6. 
+- Chrome 插件： Vimium
+
+- 配置 vscode + vim 编辑器
+
+8. 
+- *Gdd*, *ggdd* delete first and last lines
+- Macro to format a single element (register *e*)
+    - Go to line with *\<name>*
+    - *qe^r"f>s": "\<ESC>f\<C"\<ESC>q*
+- Macro to format a person
+    - Go to line with *\<person>*
+    - *qpS{\<ESC>j@eA,\<ESC>j@ejS},<ESC>q*
+- Macro to format a person and go to the next person
+    - Go to line with *\<person>*
+    - *qq@pjq*
+- Execute macro until end of file
+*999@q*
+- Manually remove last *,* and add *[* and *]* delimiters
+
 ## Lecture 4. Data Wrangling
 
 ## Lecture 5. Command-line Environment
