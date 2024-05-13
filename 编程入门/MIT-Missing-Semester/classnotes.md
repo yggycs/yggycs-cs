@@ -216,6 +216,93 @@ cd ~/.vim/pack/vendor/start; git clone https://github.com/ctrlpvim/ctrlp.vim
 
 ## Lecture 4. Data Wrangling
 
+*sed* - a stream editor
+
+*sed -E*
+
+*capture groups*
+
+*wc* - word counting
+
+*sort*
+
+*uniq*
+
+*head -n*
+
+*tail -n*
+
+*awk* - column stream editor
+
+*paste*
+
+*bc*
+
+*R* - R programming language
+
+*gnuplot* - plotter
+
+*xargs*
+
+*ffmpeg* 
+
+*convert*
+
+*-* - turn the file output to a stream output
+
+### Exercise
+2.  
+``` shell
+cat /usr/share/dict/words | tr [:upper:] [:lower:] | grep -E "^([b-z]*a){3}[a-z]*$" | grep -v "'s$" | wc -l
+
+cat /usr/share/dict/words | tr [:upper:] [:lower:] | grep -E "^([b-z]*a){3}[a-z]*$" | grep -v "'s$" | sed -E "s/.*([a-z]{2})$/\1/" | sort | uniq -c | sort -nk1,1 | tail -n3
+
+cat /usr/share/dict/words | tr [:upper:] [:lower:] | grep -E "^([b-z]*a){3}[a-z]*$" | grep -v "'s$" | sort | uniq | wc -l
+
+# tmp0.sh
+#!/bin/bash
+for i in {a..z}; do
+    for j in {a..z}; do
+        echo "$i$j"
+    done
+done
+
+./tmp0.sh > tmp0.log
+cat /usr/share/dict/words | tr [:upper:] [:lower:] | grep -E "^([b-z]*a){3}[a-z]*$" | grep -v "'s$" | uniq > tmp1.log 
+cat tmp0.log tmp1.log | sort | uniq -u
+```
+
+3. 输出流目的文件会先被清空导致命令运行不正确，不是 sed 特有的，而是使用 > 带来的。 
+``` shell
+sed -i.bak "s/REGEX/SUBSTITUTION/" input.txt
+```
+
+4. 
+``` shell
+journalctl | sed -E "s/Startup finished in (\d+)ms \./\1/" | tail -n10 | sort | tail -n1
+journalctl | sed -E "s/Startup finished in (\d+)ms \./\1/" | tail -n10 | sort | head -n1
+journalctl | sed -E "s/Startup finished in (\d+)ms \./\1/" | tail -n10 | paste -sd+ | bc -l | awk '{print $1/10}'
+journalctl | sed -E "s/Startup finished in (\d+)ms \./\1/" | tail -n10 | sort | head -n6 | tail -2 | paste -sd+ | bc -l | awk '{print $1/2}'
+```
+
+5. 
+``` shell
+journalctl -b 0 > tmp.log
+journalctl -b -1 >> tmp.log
+journalctl -b -2 >> tmp.log
+cat tmp.log | grep "Startup finished in" | sed -E "(s/.*in).*s \.$/\1/" | sort | uniq -c | awk '$1!=3 { print }'
+```
+
+6. 
+``` shell
+curl "https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1" > data.html
+cat data.html | pup ".group0 text{}" > column1.log
+cat data.html | pup ".group1 text{}" > column2.log
+paste column1.log column2.log | awk '{ print $1 }' | sort -n | sed -n '1p;$p;'
+
+paste column1.log column2.log | sed -E 's/(.*)\s(.*)$/\1-(\2)/' | paste -sd+ | bc -l
+```
+
 ## Lecture 5. Command-line Environment
 
 ## Lecture 6. Version Control (Git)
