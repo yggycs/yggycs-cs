@@ -307,6 +307,46 @@ paste column1.log column2.log | sed -E 's/(.*)\s(.*)$/\1-(\2)/' | paste -sd+ | b
 
 ## Lecture 6. Version Control (Git)
 
+*git init*
+
+*git help [command]*
+
+*git status*
+
+*git add [file]*
+
+*git commit*
+
+*git log*
+
+*git cat-file -p [hash]*
+
+*git commit -a*
+
+*git add :/*
+
+*git log --all --graph --decorate --oneline* - show the git log as a graph
+
+*git checkout*
+
+*git diff*
+
+*git branch -vv*
+
+*git merge*
+
+*git merge --continue*
+
+*git remote* 
+
+*git push*
+
+*git fetch*
+
+*git pull*
+
+*git bisect*
+
 ## Lecture 7. Debugging and Profiling
 
 ## Lecture 8. Metaprogramming
