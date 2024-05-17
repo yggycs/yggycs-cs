@@ -500,12 +500,31 @@ PermitRootLogin no
 
 6. 
 ``` shell
+(VM) sudo apt-get install mosh
+(VM) mosh-server
 
+(base) sudo apt-get install mosh
+(base) mosh username@ip
+
+(VM) ip a
+(VM) ipconfig [NIC_name] down
+
+(这里 mosh 和 ssh 应该都会断连，因为 mosh 使用的是 UDP)
+
+(VM) ipconfig [NIC_name] up
+
+(这里 mosh 和 ssh 应该都会重连)
 ```
 
 7. 
-``` shell
 
+![alt text](figure/fig3.png)
+![alt text](figure/fig4.png)
+[ssh 端口转发](https://www.cainiaojc.com/ssh/ssh-port-forwarding.html)
+``` shell
+ssh -f -D local-port tunnel-host -N
+ssh -f -L local-port:target-host:target-port tunnel-host -N
+ssh -f -R remote-port:target-host:target-port -N remotehost 
 ```
 
 ## Lecture 6. Version Control (Git)
