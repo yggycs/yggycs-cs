@@ -304,6 +304,209 @@ paste column1.log column2.log | sed -E 's/(.*)\s(.*)$/\1-(\2)/' | paste -sd+ | b
 ```
 
 ## Lecture 5. Command-line Environment
+- job control
+
+    *\<c-c>* - SIGINT
+
+    *\<c-\\>* - SIGQUIT
+
+    *\<c-z>* - SIGSTOP
+
+    *jobs*
+
+    *bg %[jobId]*
+
+    *fg %[jobId]*
+
+    *kill [-STOP][-HUP][-KILL] %[pid]*
+
+    *nohup*
+
+- terminal multiplexers
+    *tmux*
+
+    *\<c-b> d* - detach
+    
+    *\<c-a> d* - detach
+
+    *tmux a* - return to the window
+
+    *tmux new -t [name]* - create a new window with name
+
+    *tmux  ls* - list all the windows
+
+    *\<c-a> c* - open a new window
+
+    *\<c-a> p* - open the previous window
+
+    *\<c-a> n* - open the next window
+    
+    *\<c-a> [num]* - open the window with the number of num
+
+    *\<c-a> ,* - rename the current window
+
+    *\<c-a> "* - split the window
+
+    *\<c-a> %* - split the window
+
+    *\<c-a> arrow keys* - navigate between different panes
+
+    *\<c-a> space* - show different layouts
+
+    *\<c-a> z* - zoom/go back
+
+- dotfiles
+    
+    *alias* - .bashrc
+    
+    dotfiles should be put in the home dict
+
+    *PS1=""* - .bashrc
+    
+- romete machines
+
+    *ssh* 
+
+    *scp*
+
+    *rsync*
+    
+    *.ssh/config*
+
+### Exercise
+
+- Job Control
+
+1. 
+``` shell
+sleep 10000
+^Z
+jobs
+bg %1
+
+pkill -9 -f "$(pgrep -af "sleep 10000" | awk '{ print $2,$3 }')"
+```
+
+2. 
+``` shell
+sleep 60
+wait $!; ls
+
+
+#!/bin/bash
+
+kill -0 $1 2> /dev/null
+while [ $? -eq 0 ]; do
+        sleep 10
+        kill -0 $1 2> /dev/null
+done
+
+echo "The process with the given pid '$1' is done!"
+
+
+
+
+sleep 30 &
+./pidwait.sh [pid]
+```
+
+- Terminal multiplexer
+
+1. [tmux guide](https://hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)   [tmux conf](https://hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)
+
+
+- Aliases
+
+1. 
+``` shell
+vim ~/.bashrc
+
+alias dc=cd
+
+source ~/.bashrc
+```
+
+2. 
+``` shell
+history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10
+vim ~/.bashrc
+
+alias xx=xx
+
+source ~/.bashrc
+```
+
+- Dotfiles
+
+1. 
+``` shell
+mkdir -p docfiles
+```
+
+2. 
+``` shell
+vim ~/.bashrc
+
+PS1="> "
+```
+
+3. 
+``` shell
+ln -s [source] ~/[docfile name]
+```
+
+- Remote Machines
+
+1. 
+``` shell
+ls ~/.ssh/'
+
+ssh-keygen -o -a 100 -t ed25519
+```
+[ssh-agent](https://www.ssh.com/ssh/agent)
+
+2. 
+``` shell
+vim ~/.ssh/config
+
+Host vm
+    User username_goes_here
+    HostName ip_goes_here
+    IdentityFile ~/.ssh/id_ed25519
+    LocalForward 9999 localhost:8888
+```
+
+3. 
+``` shell
+ssh-copy-id [-i [identity_file]] [user@]machine
+```
+
+4. 
+``` shell
+(VM) python -m http.server 8888
+(local) curl http://localhost:9999
+```
+
+5. 
+``` shell
+(VM) sudo vim /etc/ssh/sshd_config
+
+PasswordAuthentication no
+PermitRootLogin no
+
+(VM) sudo reboot
+(VM) sudo service sshd restart
+```
+
+6. 
+``` shell
+
+```
+
+7. 
+``` shell
+
+```
 
 ## Lecture 6. Version Control (Git)
 
@@ -347,12 +550,24 @@ paste column1.log column2.log | sed -E 's/(.*)\s(.*)$/\1-(\2)/' | paste -sd+ | b
 
 *git bisect*
 
+### Exercise
+
 ## Lecture 7. Debugging and Profiling
+
+### Exercise
 
 ## Lecture 8. Metaprogramming
 
+### Exercise
+
 ## Lecture 9. Security and Cryptography
+
+### Exercise
 
 ## Lecture 10. Potpourri
 
+### Exercise
+
 ## Lecture 11. Q&A
+
+### Exercise
