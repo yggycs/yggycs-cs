@@ -570,6 +570,43 @@ ssh -f -R remote-port:target-host:target-port -N remotehost
 *git bisect*
 
 ### Exercise
+2. 
+``` shell
+git clone https://github.com/missing-semester/missing-semester.git
+
+git log --all --graph --decorate
+
+git log --all --graph --decorate -p ./README.md
+
+git blame ./_config.yml
+git show a88b4eac
+```
+
+3. 
+``` shell
+
+```
+
+4. 
+``` shell
+
+```
+
+5. 
+``` shell
+
+```
+
+6. 
+``` shell
+
+```
+
+7. 
+``` shell
+
+```
+
 
 ## Lecture 7. Debugging and Profiling
 
