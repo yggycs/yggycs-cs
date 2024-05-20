@@ -583,30 +583,54 @@ git show a88b4eac
 ```
 
 3. 
+[Removing sensitive data from a repository](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
 ``` shell
-
+brew install git-filter-repo
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+cd YOUR-REPOSITORY
+git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA
+echo "YOUR-FILE-WITH-SENSITIVE-DATA" >> .gitignore
+git add .gitignore
+git commit -m "Add YOUR-FILE-WITH-SENSITIVE-DATA to .gitignore"
+git remote add origin https://github.com/OWNER/REPOSITORY.git
+git push origin --force --all
+git push origin --force --tags
 ```
 
 4. 
 ``` shell
-
+git stash
+git log --all --graph --decorate --oneline
+git stash pop
 ```
 
 5. 
 ``` shell
-
+git config --global alias.graph "log --all --graph --decorate --oneline"
+git graph
 ```
 
 6. 
 ``` shell
-
+git config --global core.excludesfile ~/.gitignore_global
+touch ~/.gitignore_global
+echo '.DS_Store' >> ~/.gitignore_global
 ```
 
 7. 
+[first-contributions](https://github.com/firstcontributions/first-contributions)
 ``` shell
-
+git clone git@github.com:yggycs/first-contributions.git
+cd first-contributions
+git switch -c yggycs-new-branch
 ```
-
+![alt text](figure/fig5.png)
+``` shell
+git status
+git add Contributors.md
+git commit -m "Add yggycs to Contributors list"
+git push -u origin yggycs-new-branch
+```
 
 ## Lecture 7. Debugging and Profiling
 
