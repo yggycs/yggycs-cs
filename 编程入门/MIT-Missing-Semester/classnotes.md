@@ -10,35 +10,35 @@
 
 ### command
 
-*pwd* - print working directory
+`pwd` - print working directory
 
-*cd* - change directory
+`cd` - change directory
 
-*~(tilde)* - home directory
+`~(tilde)` - home directory
 
-*-(dash)* - previous directory
+`-(dash)` - previous directory
 
-*--help* - show the help info
+`--help` - show the help info
 
-*-l* - list the detail info 
+`-l` - list the detail info 
 
-*man* - manual page 
+`man` - manual page 
 
-*<* - rewire the input stream
+`<` - rewire the input stream
 
-*\>* - rewire the output stream(overwrite)
+`\>` - rewire the output stream(overwrite)
 
-*>>* - rewire the output stream(append)
+`>>` - rewire the output stream(append)
 
-*cat* - concatenate
+`cat` - concatenate
 
-*|* - pipe
+`|` - pipe
 
-*sudo su* - root
+`sudo su` - root
 
-*sudo tee*
+`sudo tee`
 
-*xdg-open*
+`xdg-open`
 
 ### Exercises
 
@@ -99,25 +99,25 @@ cat /sys/class/power_supply/battery/capacity
 ``` 
 
 ## Lecture 2. Shell Tools and Scripting
-*$0* - the name of the script
+`$0` - the name of the script
 
-*$1 - $9* - the args that the bash script takes
+`$1 - $9` - the args that the bash script takes
 
-*$?* - th error code from the previous command
+`$?` - th error code from the previous command
 
-*$_* - the last arg of the previous command
+`$_` - the last arg of the previous command
 
-*!!* - the last command
+`!!` - the last command
 
-*$#* - the number of the args
+`$#` - the number of the args
 
-*\$$* - the pid of the running command
+`\$$` - the pid of the running command
 
-*$@* - the all args 
+`$@` - the all args 
 
-*2>* - redirect the error standard stream
+`2>` - redirect the error standard stream
 
-*$() <()* - replace cmd
+`$() <()` - replace cmd
 
 ### Exercises
 1. 
@@ -200,55 +200,55 @@ cd ~/.vim/pack/vendor/start; git clone https://github.com/ctrlpvim/ctrlp.vim
 - 配置 vscode + vim 编辑器
 
 8. 
-- *Gdd*, *ggdd* delete first and last lines
-- Macro to format a single element (register *e*)
-    - Go to line with *\<name>*
-    - *qe^r"f>s": "\<ESC>f\<C"\<ESC>q*
+- `Gdd`, `ggdd` delete first and last lines
+- Macro to format a single element (register `e`)
+    - Go to line with `\<name>`
+    - `qe^r"f>s": "\<ESC>f\<C"\<ESC>q`
 - Macro to format a person
-    - Go to line with *\<person>*
-    - *qpS{\<ESC>j@eA,\<ESC>j@ejS},<ESC>q*
+    - Go to line with `\<person>`
+    - `qpS{\<ESC>j@eA,\<ESC>j@ejS},<ESC>q`
 - Macro to format a person and go to the next person
-    - Go to line with *\<person>*
-    - *qq@pjq*
+    - Go to line with `\<person>`
+    - `qq@pjq`
 - Execute macro until end of file
-*999@q*
-- Manually remove last *,* and add *[* and *]* delimiters
+`999@q`
+- Manually remove last `,` and add `[` and `]` delimiters
 
 ## Lecture 4. Data Wrangling
 
-*sed* - a stream editor
+`sed` - a stream editor
 
-*sed -E*
+`sed -E`
 
-*capture groups*
+`capture groups`
 
-*wc* - word counting
+`wc` - word counting
 
-*sort*
+`sort`
 
-*uniq*
+`uniq`
 
-*head -n*
+`head -n`
 
-*tail -n*
+`tail -n`
 
-*awk* - column stream editor
+`awk` - column stream editor
 
-*paste*
+`paste`
 
-*bc*
+`bc`
 
-*R* - R programming language
+`R` - R programming language
 
-*gnuplot* - plotter
+`gnuplot` - plotter
 
-*xargs*
+`xargs`
 
-*ffmpeg* 
+`ffmpeg` 
 
-*convert*
+`convert`
 
-*-* - turn the file output to a stream output
+`-` - turn the file output to a stream output
 
 ### Exercise
 2.  
@@ -306,72 +306,72 @@ paste column1.log column2.log | sed -E 's/(.*)\s(.*)$/\1-(\2)/' | paste -sd+ | b
 ## Lecture 5. Command-line Environment
 - job control
 
-    *\<c-c>* - SIGINT
+    `\<c-c>` - SIGINT
 
-    *\<c-\\>* - SIGQUIT
+    `\<c-\\>` - SIGQUIT
 
-    *\<c-z>* - SIGSTOP
+    `\<c-z>` - SIGSTOP
 
-    *jobs*
+    `jobs`
 
-    *bg %[jobId]*
+    `bg %[jobId]`
 
-    *fg %[jobId]*
+    `fg %[jobId]`
 
-    *kill [-STOP][-HUP][-KILL] %[pid]*
+    `kill [-STOP][-HUP][-KILL] %[pid]`
 
-    *nohup*
+    `nohup`
 
 - terminal multiplexers
-    *tmux*
+    `tmux`
 
-    *\<c-b> d* - detach
+    `\<c-b> d` - detach
     
-    *\<c-a> d* - detach
+    `\<c-a> d` - detach
 
-    *tmux a* - return to the window
+    `tmux a` - return to the window
 
-    *tmux new -t [name]* - create a new window with name
+    `tmux new -t [name]` - create a new window with name
 
-    *tmux  ls* - list all the windows
+    `tmux  ls` - list all the windows
 
-    *\<c-a> c* - open a new window
+    `\<c-a> c` - open a new window
 
-    *\<c-a> p* - open the previous window
+    `\<c-a> p` - open the previous window
 
-    *\<c-a> n* - open the next window
+    `\<c-a> n` - open the next window
     
-    *\<c-a> [num]* - open the window with the number of num
+    `\<c-a> [num]` - open the window with the number of num
 
-    *\<c-a> ,* - rename the current window
+    `\<c-a> ,` - rename the current window
 
-    *\<c-a> "* - split the window
+    `\<c-a> "` - split the window
 
-    *\<c-a> %* - split the window
+    `\<c-a> %` - split the window
 
-    *\<c-a> arrow keys* - navigate between different panes
+    `\<c-a> arrow keys` - navigate between different panes
 
-    *\<c-a> space* - show different layouts
+    `\<c-a> space` - show different layouts
 
-    *\<c-a> z* - zoom/go back
+    `\<c-a> z` - zoom/go back
 
 - dotfiles
     
-    *alias* - .bashrc
+    `alias` - .bashrc
     
     dotfiles should be put in the home dict
 
-    *PS1=""* - .bashrc
+    `PS1=""` - .bashrc
     
 - romete machines
 
-    *ssh* 
+    `ssh` 
 
-    *scp*
+    `scp`
 
-    *rsync*
+    `rsync`
     
-    *.ssh/config*
+    `.ssh/config`
 
 ### Exercise
 
@@ -529,45 +529,45 @@ ssh -f -R remote-port:target-host:target-port -N remotehost
 
 ## Lecture 6. Version Control (Git)
 
-*git init*
+`git init`
 
-*git help [command]*
+`git help [command]`
 
-*git status*
+`git status`
 
-*git add [file]*
+`git add [file]`
 
-*git commit*
+`git commit`
 
-*git log*
+`git log`
 
-*git cat-file -p [hash]*
+`git cat-file -p [hash]`
 
-*git commit -a*
+`git commit -a`
 
-*git add :/*
+`git add :/`
 
-*git log --all --graph --decorate --oneline* - show the git log as a graph
+`git log --all --graph --decorate --oneline` - show the git log as a graph
 
-*git checkout*
+`git checkout`
 
-*git diff*
+`git diff`
 
-*git branch -vv*
+`git branch -vv`
 
-*git merge*
+`git merge`
 
-*git merge --continue*
+`git merge --continue`
 
-*git remote* 
+`git remote` 
 
-*git push*
+`git push`
 
-*git fetch*
+`git fetch`
 
-*git pull*
+`git pull`
 
-*git bisect*
+`git bisect`
 
 ### Exercise
 2. 
@@ -634,7 +634,108 @@ git push -u origin yggycs-new-branch
 
 ## Lecture 7. Debugging and Profiling
 
+- debugging
+
+    `/var/log`
+
+    `logger "Hello Logs"`
+
+    `ipdb`
+
+    `gdb` - 非常底层的调试器
+
+    `strace`
+
+    `pyflacks`, `mypy` - static analysis tool
+
+    `writegood` - English static analysis tool
+
+    `perf`
+
+
+
+- profiling(性能分析)
+
+    `real time`, `user time`, `system time`
+
+    `tracing profiler`
+
+    `sampling profiler`
+
+    `cProfile`
+
+    `kernprof` - line profiler
+
+    `memory profiler`
+
+    `flame graph`
+
+    `call graph`
+
+    `htop`
+
+    `stress`
+
+    `du` - disk usage
+
+    `ucdu`
+
+    `lsof` - list of open files
+
+    `hyperfine`
+
 ### Exercise
+
+- Debugging
+
+1. 
+``` shell
+sudo ls
+journalctl --since yesterday | grep "sudo"
+```
+
+2. 
+    [pdb-tutorial](https://github.com/spiside/pdb-tutorial)
+
+    [Python Debugging With Pdb](https://realpython.com/python-debugging-pdb/)
+
+3. 
+``` shell
+
+```
+
+4. 
+``` shell
+
+```
+
+- Profiling
+
+5. 
+``` shell
+
+```
+
+6. 
+``` shell
+
+```
+
+7. 
+``` shell
+
+```
+
+8. 
+``` shell
+
+```
+
+9. 
+``` shell
+
+```
+
 
 ## Lecture 8. Metaprogramming
 
