@@ -701,10 +701,21 @@ journalctl --since yesterday | grep "sudo"
 
 3. 
 ``` shell
-
+sudo apt install shellcheck
+shellcheck ~/mit-missing-semester/lec7/ex3.sh
 ```
+![alt text](figure/fig6.png)
+``` shell
+for f in $(ls -- *.m3u)
 
-4. 
+    grep -qi hq.*mp3 "$f" \
+
+      && echo -e "Playlist $f contains a HQ file in mp3 format"
+```
+在 vscode 中可以安装 ShellCheck 插件
+
+4. [reversible debugging](https://undo.io/resources/reverse-debugging-whitepaper/) [rr](https://rr-project.org/) [RevPDB](https://morepypy.blogspot.com/2016/07/reverse-debugging-for-python.html)
+
 ``` shell
 
 ```
