@@ -714,11 +714,7 @@ for f in $(ls -- *.m3u)
 ```
 在 vscode 中可以安装 ShellCheck 插件
 
-4. [reversible debugging](https://undo.io/resources/reverse-debugging-whitepaper/) [rr](https://rr-project.org/) [RevPDB](https://morepypy.blogspot.com/2016/07/reverse-debugging-for-python.html)
-
-``` shell
-
-```
+4. [reversible debugging](https://undo.io/resources/reverse-debugging-whitepaper/) [rr](https://rr-project.org/) [RevPDB](https://morepypy.blogspot.com/2016/07/reverse-debugging-for-python.html) [rr演示视频](https://www.youtube.com/watch?v=hYsLBcTX00I)
 
 - Profiling
 
