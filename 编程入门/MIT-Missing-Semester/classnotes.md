@@ -720,31 +720,80 @@ for f in $(ls -- *.m3u)
 
 5. 
 ``` shell
-
+pip install line_profiler
+pip install rich
 ```
+![alt text](figure/fig7.png)
+``` shell
+python3 -m kernprof -lvr sorts.py
+```
+![alt text](figure/fig8.png)
+插入排序的瓶颈在于内层的 while 循环，可以看到内层 while 循环的 Hits 值很大。快排的瓶颈主要在于准备子问题 left 和 right。
+![alt text](figure/fig9.png)
+``` shell
+pip install -U memory_profiler
+python3 -m memory_profiler sorts.py
+```
+![alt text](figure/fig10.png)
+这里结果与预想的不符，主要是因为测试的规模还是比较小。学习 memory_profiler 的基本使用方法即可。
+![alt text](figure/fig11.png)
+``` shell
+sudo perf stat -e cpu-cycles,cache-references,cache-misses python3 sorts.py
+```
+![alt text](figure/fig12.png)
+![alt text](figure/fig13.png)
+![alt text](figure/fig14.png)
 
 6. 
 ``` shell
-
+touch fib.py
+sudo apt install python3-pycallgraph
+sudo apt install graphviz
+pycallgraph graphviz -- ./fib.py
 ```
+![alt text](figure/pycallgraph.png)
+
+可以看到 fib0 被调用了 21 次。
+
+![alt text](figure/pycallgraph2.png)
+
+可以看到每个 fibN 只被调用了一次。
 
 7. 
 ``` shell
+python3 -m http.server 4444
 
+lsof | grep LISTEN
+kill <PID>
 ```
 
 8. 
 ``` shell
-
+stress -c 3
+htop
 ```
+![alt text](figure/fig15.png)
+``` shell
+taskset --cpu-list 0,2 stress -c 3
+```
+
+![alt text](figure/fig16.png)
+
+taskset 将任务限制在 #0 和 #2 两个 cpu 资源上。
+
+[知乎 - Cgroup使用介绍](https://zhuanlan.zhihu.com/p/651405353)
 
 9. 
 ``` shell
-
+curl ipinfo.io
 ```
-
+![alt text](figure/fig17.png)
 
 ## Lecture 8. Metaprogramming
+
+
+
+
 
 ### Exercise
 
