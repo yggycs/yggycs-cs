@@ -791,9 +791,23 @@ curl ipinfo.io
 
 ## Lecture 8. Metaprogramming
 
+- build systems
+    
+    `make`
 
+    `Makefile`
 
+- dependency management
 
+    `semantic versioning` - major version, minor version, patch version
+
+    `lock file`
+
+    `vendoring`
+
+- continuous integration systems
+
+    `recipe`
 
 ### Exercise
 
