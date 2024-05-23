@@ -809,6 +809,18 @@ curl ipinfo.io
 
     `recipe`
 
+    `github page`
+
+- testing
+
+    `unit test` - test a single feature
+
+    `integration test` - test the interaction between different subsystems of a program
+
+    `regression test` - test things that were broken in the past
+
+    `mocking` - be able to replace parts of the system
+
 ### Exercise
 
 ## Lecture 9. Security and Cryptography
