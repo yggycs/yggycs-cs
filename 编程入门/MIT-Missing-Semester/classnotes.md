@@ -823,6 +823,77 @@ curl ipinfo.io
 
 ### Exercise
 
+1. 
+``` shell
+.PHONY: clean
+
+clean: 
+	git ls-files -o | xargs rm
+```
+
+2. 
+``` shell
+# Caret requirements
+# Caret requirements are the default version requirement strategy. This version strategy allows SemVer compatible updates.
+log = "^1.2.3"
+
+# Tilde requirements
+# Tilde requirements specify a minimal version with some ability to update. If you specify a major, minor, and patch version or only a major and minor version, only patch-level changes are allowed. If you only specify a major version, then minor- and patch-level changes are allowed.
+log = "~1.2.3"
+
+# Wildcard requirements
+# Wildcard requirements allow for any version where the wildcard is positioned.
+log = "1.2.*"
+
+# Comparison requirements
+# Comparison requirements allow manually specifying a version range or an exact version to depend on.
+log >= 1.2.0
+
+# Multiple version requirements
+# multiple version requirements can be separated with a comma
+log >= 1.2, < 1.5
+```
+
+3. 
+``` shell
+cd .git/hooks/
+touch pre-commit
+chmod 755 pre-commit
+vim pre-commit
+
+#!/bin/bash
+
+make
+
+if [ $? -ne 0 ];
+then
+        echo '[error]: cannot build the pdf file!'
+        exit 1
+fi
+```
+
+4. 为项目 [yggycs-try](https://github.com/yggycs/yggycs-try) 增加 shellcheck 的 CI 环境
+
+    **Step1.** 在项目 Actions 中新建 workflow，选择 set up a workflow yourself，可以看到在 .github\workflows 目录下新建了文件 main.yml。
+
+    **Step2.** 参考 [Github Action - ShellCheck](https://github.com/marketplace/actions/shellcheck) 补充 main.yml。
+
+    **Step3.** 保存文件，推送至 Github 仓库。
+
+    **Step4.** 在本地拉取更改，新建文件 test.sh，编辑文件后提交，检查 Github Actions 的状态。根据错误提示修改代码重新提交即可。
+
+![alt text](figure/fig18.png)
+
+5. 为项目 [yggycs-try](https://github.com/yggycs/yggycs-try) 增加 Lint Markdown 的 CI 环境
+
+    **Step1.** 参考 [Github Action - Lint Markdown](https://github.com/marketplace/actions/lint-markdown) 补充 main.yml。
+
+    **Step2.** 保存文件，推送至 Github 仓库。
+
+    **Step3.** 在本地拉取更改，新建文件 test.md，编辑文件后提交，检查 Github Actions 的状态。根据错误提示修改代码重新提交即可。
+
+![alt text](figure/fig19.png)
+
 ## Lecture 9. Security and Cryptography
 
 ### Exercise
