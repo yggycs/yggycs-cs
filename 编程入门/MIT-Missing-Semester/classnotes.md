@@ -1048,7 +1048,51 @@ git tag -v v0.1
 
 ## Lecture 10. Potpourri
 
-### Exercise
+- keyboard remapping
+
+- daemons
+
+- file systems in user space
+
+    - FUSE 
+
+    ![alt text](figure/fig25.png)
+
+    - SSHFS
+
+- backup
+
+- APIs   
+
+    - curl
+
+    - jq
+
+    - OAuth
+
+- command-line arguments
+
+    dry run mode
+
+    `--`
+
+- window managee
+
+    tiling window manager
+
+- VPNs
+
+- Markdown    
+
+- Hammerspoon
+
+- Live USB
+
+- Virtual machines, Vagrant, Docker, the cloud and OpenStack
+
+- notebook programming environment
+
+- Github
 
 ## Lecture 11. Q&A
 
