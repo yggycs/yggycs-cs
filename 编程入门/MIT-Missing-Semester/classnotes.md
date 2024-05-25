@@ -896,7 +896,155 @@ fi
 
 ## Lecture 9. Security and Cryptography
 
+- Entropy
+
+    $ Entropy = \log_2(\#possibility)$
+
+- Cryptographic hash functions
+
+    sha1(bytes) -> 160 bits
+
+    hard-to-invert functions that have random-looking outputs
+
+    non-invertiable
+
+    collision resistant
+
+    `sha1sum`
+
+    commitment scheme
+
+- Key Derivation Functions (KDF)
+
+    PBKDF2: slow, slow down the attackers
+
+- Symmetric cryptography
+    
+    - Keygen() -> key [randomized]
+
+    - encrypt(plaintext, key) -> ciphertext
+
+    - decrypt(ciphertext, key) -> plaintext
+
+    ---
+
+    given ciphertext, one cannot figure the plaintext without a key
+
+    decrypt(encrypt(m, k), k) = m
+
+    ---
+
+    `AES256`
+
+    ![alt text](figure/fig20.png)
+
+    `openssl`
+
+    salt value
+
+- Asymmetric cryptography
+
+    - Keygen() -> (public key, private key)
+
+    - encrypt(plaintext, public key) -> ciphertext
+
+    - decrypt(ciphertext, private key) -> plaintext
+
+    ---
+
+    - sign(message, private key) -> signature
+
+    - verify(message, signature, public key) -> ok?
+
+    hard to forge without a private key
+
+    ---
+
+    `RSA`
+
+    email encryption - PGP public key
+
+    sign the software
+
+- key distribution
+
+    PGP
+
+    [keybase](https://keybase.io/)
+
+- Hybrid encryption
+
+    ![alt text](figure/fig21.png)
+
 ### Exercise
+
+- Entropy
+
+1. $ Entropy = \log_2(100000^4) = 66.4$
+
+2. $ Entropy = \log_2(62^8) = 47.6$
+
+3. The former one is stronger.
+
+4. $\frac{100000^4}{1000} = 10^{17} seconds; \frac{62^8}{1000} = 2.2 \times 10^{11} seconds$
+
+- Cryptographic hash functions
+
+1. 
+``` shell
+wget https://mirrors.tuna.tsinghua.edu.cn/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso
+sha1sum debian-12.5.0-amd64-netinst.iso
+```
+
+![alt text](figure/fig22.png)
+![alt text](figure/fig23.png)
+
+- Symmetric cryptography
+
+1. 
+``` shell
+touch try.md
+openssl aes-256-cbc -salt -in try.md -out try_encrypt.md
+cat try_encrypt.md
+hexdump try_encrypt.md
+openssl aes-256-cbc -d -in try_encrypt.md -out try_decrypt.md
+cmp try.md try_decrypt.md
+```
+![alt text](figure/fig24.png)
+
+- Asymmetric cryptography
+
+1. 
+``` shell
+ssh-keygen -t ed25519
+```
+
+2. 
+``` shell
+sudo apt-get install gnupg
+gpg --gen-key
+```
+
+3. 
+``` shell
+# curl + gpg pro tip: import anish's keys
+curl https://keybase.io/anish/pgp_keys.asc | gpg --import
+
+gpg --encrypt --sign --armor -r person@email.com name_of_file
+```
+
+4. 
+``` shell
+export GPG_TTY=$(tty)
+gpg --list-secret-keys --keyid-format SHORT
+git config --global user.signingkey [key ID]
+git config --global commit.gpgsign true
+git commit -S -m "gpg sign of the commit"
+git show --show-signature
+
+git tag v0.1 -m "v0.1" -s
+git tag -v v0.1
+```
 
 ## Lecture 10. Potpourri
 
