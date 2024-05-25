@@ -1052,4 +1052,44 @@ git tag -v v0.1
 
 ## Lecture 11. Q&A
 
-### Exercise
+`source script.sh` vs `./script.sh`
+
+`/bin`: for essential system utilities
+
+`/usr/bin`: for user programs
+
+`/user/local/bin`: for user compiled programs
+
+`/lib`: for libraries
+
+`/etc`: for configuration files
+
+`/home`: for each user's home directory
+
+`/tmp`: a temporary directory
+
+`/var`: holds files that change over time(lock files for package managers, log files that keep track of process IDs)
+
+`/dev`: devices
+
+`/opt`: third-party software
+
+`cache-grind`
+
+`BPF eBPF`
+
+`uBlock Origin`
+
+`Stylus`
+
+`Perl`
+
+`column -t`
+
+`pandoc`
+
+`R` `ggplot` `ggplot2`
+
+`containers` vs `virtual machines`
+
+`U2F`
